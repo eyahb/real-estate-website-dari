@@ -1,0 +1,408 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" 
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui"
+ xmlns:m="http://code.google.com/p/gmaps4jsf/" 
+ template="/template/templateeya.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content"> 
+
+
+<h:head>
+
+<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/theme-light_blue-beige.css"  rel="stylesheet" />
+		<link href="../..resources/assets/css/custom.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<script type='text/javascript'>
+		jQuery(function(){ var jq = jQuery.noConflict(true);});
+    	</script>
+    	<link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet"></link>
+ 
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_cnhXyrD3sh_t2t75KWOyX0rHz71mEpU&amp;sensor=false&amp;libraries=places"></script>
+    <script type='text/javascript'>
+    document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    doStuff(e);
+}, { passive: false });</script>
+	
+	 <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+    </style>
+     <script>
+    // <![CDATA[
+  
+       
+        function initialize() {
+        	var myLatLng2 = {lat: 37.289570, lng: 9.848457};
+        	var myLatLng3 = {lat: 37.335632, lng: 9.743392};
+        	var myLatLng4 = {lat: 37.272903, lng: 9.584826 };
+        	var myLatLng5 = {lat: 36.693958, lng: 10.132192};
+        	var myLatLng6 = {lat: 36.594881, lng: 9.694576};
+        	var myLatLng7 = {lat: 36.993403, lng:  10.152546};
+        	var myLatLng8 = {lat: 36.603869, lng: 9.911009 };
+        	var myLatLng9 = {lat: 36.791277, lng: 10.018208};
+        	var myLatLng10 = {lat:36.846135, lng:  10.660045 };
+        	var myLatLng11 = {lat: 34.750564, lng: 9.855374 };
+        	var myLatLng12 = {lat: 34.878681, lng: 10.320808 };
+        	
+        	var mapOptions = {
+            center: new google.maps.LatLng(-33.8688, 151.2195),
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          
+          var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+          var input = /** @type {HTMLInputElement} */(document.getElementById('searchTextField'));
+          var autocomplete = new google.maps.places.Autocomplete(input);
+
+          autocomplete.bindTo('bounds', map);
+
+          var infowindow = new google.maps.InfoWindow();
+          var marker = new google.maps.Marker({
+            map: map
+          });
+          var marker2 = new google.maps.Marker({
+              position: myLatLng2,
+              map: map,
+              title: 'House 500DT'
+            });
+          var marker3 = new google.maps.Marker({
+              position: myLatLng3,
+              map: map,
+              title: 'Villa 400DT'
+            });
+          var marker4 = new google.maps.Marker({
+              position: myLatLng4,
+              map: map,
+              title: 'Appartment 200DT'
+            });
+          var marker5 = new google.maps.Marker({
+              position: myLatLng5,
+              map: map,
+              title: 'Appartment 300DT'
+            });
+          var marker6 = new google.maps.Marker({
+              position: myLatLng6,
+              map: map,
+              title: 'House 500'
+            });
+          var marker7 = new google.maps.Marker({
+              position: myLatLng7,
+              map: map,
+              title: 'Studio 100DT'
+            });
+          var marker8 = new google.maps.Marker({
+              position: myLatLng8,
+              map: map,
+              title: 'House 400DT'
+            });
+          var marker9 = new google.maps.Marker({
+              position: myLatLng9,
+              map: map,
+              title: 'Appartment 200DT'
+            });
+          var marker10 = new google.maps.Marker({
+              position: myLatLng10,
+              map: map,
+              title: 'Villa 500DT'
+            });
+          var marker11 = new google.maps.Marker({
+              position: myLatLng11,
+              map: map,
+              title: 'House 350DT'
+            });
+          var marker12 = new google.maps.Marker({
+              position: myLatLng12,
+              map: map,
+              title: 'Studio 150DT'
+            });
+         
+
+
+
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            input.className = '';
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+              // Inform the user that the place was not found and return.
+              input.className = 'notfound';
+              return;
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+              map.fitBounds(place.geometry.viewport);
+            } else {
+              map.setCenter(place.geometry.location);
+              map.setZoom(17);  // Why 17? Because it looks good.
+            }
+            marker.setIcon(/** @type {google.maps.Icon} */({
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(35, 35)
+            }));
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            var address = '';
+            if (place.address_components) {
+              address = [
+                (place.address_components[0] && place.address_components[0].short_name || ''),
+                (place.address_components[1] && place.address_components[1].short_name || ''),
+                (place.address_components[2] && place.address_components[2].short_name || '')
+              ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+          });
+
+          // Sets a listener on a radio button to change the filter type on Places
+          // Autocomplete.
+          function setupClickListener(id, types) {
+            var radioButton = document.getElementById(id);
+            google.maps.event.addDomListener(radioButton, 'click', function() {
+              autocomplete.setTypes(types);
+            });
+          }
+
+          setupClickListener('changetype-all', []);
+          setupClickListener('changetype-establishment', ['establishment']);
+          setupClickListener('changetype-geocode', ['geocode']);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    // ]]>
+    </script>
+</h:head>
+
+
+<h:body>
+
+ 
+<h:form prependId="false">
+     
+    <h3 style="margin-top:0">Search A Property </h3>
+    <h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+        <p:outputLabel  value="Type a Location" />
+        <p:inputText id="searchTextField" type="text" size="50" />
+        
+    </h:panelGrid>
+     
+   
+    <p:gmap id="map-canvas" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:100%;height:400px" model="#{markersView.simpleModel}" />
+    </h:form>
+     <p:commandButton value="Goto Search" action="#{pubController.gotoSearch()}"  class="form__submit"  style="height: 40px"/> 
+    
+    
+
+
+  
+ 
+    <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+<script type="text/javascript">
+    var j$132 = $.noConflict(true);
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var j$144 = $.noConflict(true);
+</script>
+   
+    
+    </h:body>
+    <h:panelGroup>
+		   <!-- BEGIN FOOTER-->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__wrap">
+              <div class="footer__col footer__col--first">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Menu</h2>
+                  </div>
+                  <div class="widget__content">
+                    <nav class="nav nav--footer"><a href="index.html">Home</a><a href="properties_listing_grid.html">Realty</a><a href="agents_listing_grid.html">Agents</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="pricing.html">Pricing</a><a href="contacts.html">Contacts</a><a href="feature_ui.html">UI</a></nav>
+                   
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">About</h2>
+                  </div>
+                  <div class="widget__content">
+                    <aside class="widget_text">
+                      <div class="textwidget">
+                        DariTN is the leader in online real estate.
+                       
+                      </div>
+                      
+                    </aside>
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Social</h2>
+                  </div>
+                  <div class="widget__content">
+                    <div class="social social--footer"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+                    <!-- end of block .social-footer-->
+                  </div>
+                </div>
+              </div>
+              <!-- end of block .footer__col-first-->
+              <div class="footer__col footer__col--second">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Contact</h2>
+                  </div>
+                  <div class="widget__content">
+                    <section class="address address--footer">
+                      <h4 class="address__headline">Our office</h4>
+                      <address class="address__main"><span>ESPRIT Incubator, 4th floor, Tunisia</span><a href="tel:+442240052225">+216 99 999 999</a><a href="mailto:hello@example.com">Dari4infob4@esprit.tn</a></address>
+                    </section>
+                    <!-- end of block .address-->
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Feedback</h2>
+                  </div>
+                  <div class="widget__content">
+                    <!-- BEGIN SECTION FEEDBACK-->
+                    <form action="#" class="form form--flex form--footer js-parsley">
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="in-email" class="sr-only control-label">E-mail</label>
+                          <input id="in-email" type="email" name="email" placeholder="E-mail"  data-parsley-trigger="change" class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                          <label for="in-message" class="sr-only control-label">Message for Us</label>
+                          <textarea id="in-message" name="message" placeholder="Message for Us"  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-validation-threshold="10" data-parsley-minlength-message="You need to enter at least a 20 caracters long comment.." class="form-control"></textarea>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <button type="submit" class="form__submit">Send</button>
+                      </div>
+                    </form>
+                    <!-- end of block .form__wrap-->
+                    <!-- END SECTION FEEDBACK-->
+                  </div>
+                </div>
+              </div>
+              
+              <div class="clearfix"></div><span class="footer__copyright">2020 Dari.tn. All rights reserved</span>
+              <!-- end of block .footer__copyright-->
+            </div>
+          </div>
+        </footer>
+       
+	 </h:panelGroup>
+    
+</ui:define>
+</ui:composition>
+
+
+

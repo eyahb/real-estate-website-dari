@@ -1,0 +1,324 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" 
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui" 
+ template="/template/templateeya.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content"> 
+
+
+<h:head>
+
+<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/theme-light_blue-beige.css"  rel="stylesheet" />
+		<link href="../..resources/assets/css/custom.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<script type='text/javascript'>
+		jQuery(function(){ var jq = jQuery.noConflict(true);});
+    	</script>
+    	<link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet"></link>
+    	       <script src="https://maps.googleapis.com/maps/api/js?v=3.0&amp;key=AIzaSyD_cnhXyrD3sh_t2t75KWOyX0rHz71mEpU&amp;sensor=true&amp;libraries=places&amp;callback=initAutocomplete"></script>
+    	 <script type='text/javascript'>
+    document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    doStuff(e);
+}, { passive: false });</script>
+
+
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>google.load('visualization', '1', {'packages': ['geochart']});
+google.setOnLoadCallback(drawVisualization);
+
+  function drawVisualization() {var data = new google.visualization.DataTable();
+
+ data.addColumn('string', 'Country');
+ data.addColumn('number', 'Value'); 
+ data.addColumn({type:'string', role:'tooltip'});var ivalue = new Array();
+
+ data.addRows([[{v:'TN-13',f:'Ben Arous'},0,'Average location price in m²']]);
+ ivalue['TN-13'] = 'Houses average price: 938 Dinars <span style="color:#444; font-weight:bold;">win</span> Apartement price: 1043 Dinars.';
+
+ data.addRows([[{v:'TN-23',f:'Bizerte'},1,'Average price in m²']]);
+ ivalue['TN-23'] = '#3182BD';
+
+ data.addRows([[{v:'TN-23',f:'Bizerte'},1,'Average price in m²']]);
+ ivalue['TN-23'] = 'Houses average price: 875 Dinars, Apartement price: 1042 Dinars';
+
+ data.addRows([[{v:'TN-31',f:'Béja'},2,'Average price in m²']]);
+ ivalue['TN-31'] = 'Houses average price: 690 Dinars, Apartement price: 961 Dinars';
+
+ data.addRows([[{v:'TN-81',f:'Gabès'},3,'Average price in m²']]);
+ ivalue['TN-81'] = 'Houses average price: 660 Dinars, Apartement price: 638 Dinars';
+
+ data.addRows([[{v:'TN-71',f:'Gafsa'},4,'Average price in m²']]);
+ ivalue['TN-71'] = 'Houses average price: 593 Dinars, Apartement price: 822 Dinars';
+
+ data.addRows([[{v:'TN-32',f:'Jendouba'},5,'Average price in m²']]);
+ ivalue['TN-32'] = 'Houses average price: 677 Dinars, Apartement price: 943 Dinars';
+
+ data.addRows([[{v:'TN-41',f:'Kairouan'},6,'Average price in m²']]);
+ ivalue['TN-41'] = 'Houses average price: 615 Dinars, Apartement price:700 Dinars';
+
+ data.addRows([[{v:'TN-42',f:'Kasserine'},7,'Average price in m²']]);
+ ivalue['TN-42'] = 'Houses average price: 544 Dinars, Apartement price: 785 Dinars';
+
+ data.addRows([[{v:'TN-73',f:'Kébili'},8,'Average price in m²']]);
+ ivalue['TN-73'] = 'Houses average price: 520 Dinars, Apartement price: 568 Dinars';
+
+ data.addRows([[{v:'TN-12',f:'Ariana'},9,'Average price in m²']]);
+ ivalue['TN-12'] = 'Houses average price: 1041 Dinars, Apartement price: 1381 Dinars';
+
+ data.addRows([[{v:'TN-14',f:'La Manouba'},10,'Average price in m²']]);
+ ivalue['TN-14'] = 'Houses average price: 665 Dinars, Apartement price: 790 Dinars';
+
+ data.addRows([[{v:'TN-33',f:'Le Kef'},11,'Average price in m²']]);
+ ivalue['TN-33'] = 'Houses average price: 473 Dinars, Apartement price: 685 Dinars';
+
+ data.addRows([[{v:'TN-53',f:'Mahdia'},12,'Average price in m²']]);
+ ivalue['TN-53'] = 'Houses average price: 747 Dinars, Apartement price: 1075 Dinars';
+
+ data.addRows([[{v:'TN-52',f:'Monastir'},13,'Average price in m²']]);
+ ivalue['TN-52'] = 'Houses average price: 885 Dinars, Apartement price: 1184 Dinars';
+
+ data.addRows([[{v:'TN-82',f:'Médenine'},14,'Average price in m²']]);
+ ivalue['TN-82'] = 'Houses average price: 1030 Dinars, Apartement price: 1292 Dinars';
+
+ data.addRows([[{v:'TN-21',f:'Nabeul'},15,'Average price in m²']]);
+ ivalue['TN-21'] = 'Houses average price: 893 Dinars, Apartement price: 1265 Dinars';
+
+ data.addRows([[{v:'TN-61',f:'Sfax'},16,'Average price in m²']]);
+ ivalue['TN-61'] = 'Houses average price: 577 Dinars, Apartement price: 943 Dinars';
+
+ data.addRows([[{v:'TN-43',f:'Sidi Bouzid'},17,'Average price in m²']]);
+ ivalue['TN-43'] = 'Houses average price: 573 Dinars, Apartement price: 514 Dinars';
+
+ data.addRows([[{v:'TN-34',f:'Siliana'},18,'Average price in m²']]);
+ ivalue['TN-34'] = 'Houses average price: 704 Dinars, Apartement price: 759 Dinars';
+
+ data.addRows([[{v:'TN-51',f:'Sousse'},19,'Average price in m²']]);
+ ivalue['TN-51'] = 'Houses average price: 977 Dinars, Apartement price: 1259 Dinars';
+
+ data.addRows([[{v:'TN-83',f:'Tataouine'},20,'Average price in m²']]);
+ ivalue['TN-83'] = 'Houses average price: 522 Dinars';
+
+ data.addRows([[{v:'TN-72',f:'Tozeur'},21,'Average price in m²']]);
+ ivalue['TN-72'] = 'Houses average price: 1388 Dinars, Apartement price: 1501 Dinars';
+
+ data.addRows([[{v:'TN-11',f:'Tunis'},22,'Average price in m²']]);
+ ivalue['TN-11'] = 'Houses average price: 1041 Dinars, Apartement price: 1381 Dinars';
+
+ data.addRows([[{v:'TN-22',f:'Zaghouan'},23,'Average price in m²']]);
+ ivalue['TN-22'] = 'Houses average price: 692 Dinars, Apartement price: 833 Dinars';
+
+ 
+ 
+ var options = {
+ backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },
+ colorAxis:  {minValue: 0, maxValue: 23,  colors: ['#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#438094','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#DE3403','#E0D39E','#E0D39E','#E0D39E','#E0D39E','#E0D39E','#E0D39E','#E0D39E','#E0D39E']},
+ legend: 'none',    
+ backgroundColor: {fill:'#FFFFFF',stroke:'#FFFFFF' ,strokeWidth:0 },    
+ datalessRegionColor: '#f5f5f5',
+ displayMode: 'regions', 
+ enableRegionInteractivity: 'true', 
+ resolution: 'provinces',
+ sizeAxis: {minValue: 1, maxValue:1,minSize:10,  maxSize: 10},
+ region:'TN',
+ keepAspectRatio: true,
+ width:1000,
+ height:500,
+ 
+ tooltip: {textStyle: {color: '#444444'}, trigger:'hover'}  
+ };
+  var chart = new google.visualization.GeoChart(document.getElementById('visualization')); 
+  google.visualization.events.addListener(chart, 'select', function() {
+  var selection = chart.getSelection();
+  if (selection.length == 1) {
+  var selectedRow = selection[0].row;
+  var selectedRegion = data.getValue(selectedRow, 0);
+  if(ivalue[selectedRegion] != '') { alert(ivalue[selectedRegion]); }
+  }
+  });
+ chart.draw(data, options);
+ }
+ </script>
+
+ 
+ </h:head>
+ <h:body>
+ <div class="site-wrap js-site-wrap">
+
+   <div class="center">
+          <div class="container">
+            <div class="row">
+              <!-- BEGIN site-->
+              <div class="site site--main">
+                <header class="site__header">
+                  <h1 class="site__title">Tunisia map</h1>
+                  <h5 class="site__headline">Found:<strong> what regions have</strong></h5>
+                </header>
+ <p:commandButton value="Goto Search" action="#{pubController.gotoSearch()}"  class="form__submit"  style="height: 40px"/> 
+ <div id='visualization'></div>
+ 
+ </div>
+ </div>
+ </div> 
+ </div>
+ 
+ 
+ 
+ 
+ 
+ <div>
+                <div class="widget js-widget widget--sidebar">
+                  <div class="widget__header" style ="position: absolute;left: 42%;top: 700px">
+                    <h2 class="widget__title" >Statistics</h2>
+                    <h5 class="widget__headline">Comparison between number of houses and apartments rentals in Tunisia</h5><a class="widget__btn js-widget-btn widget__btn--toggle">Show filter</a>
+                  </div>
+ <p:chart type="line" model="#{chartView.areaModel}" />
+ 
+ 
+ 
+  </div>
+ </div>
+ 
+ 
+ 
+       <div class="widget__content" style ="position: absolute;left: 58.6%;top: 00px">
+       <header class="site__header">
+                  <h1 class="site__title">Remember !</h1>
+                  <h5 class="site__headline">The price also depends<strong> on its condition !</strong></h5>
+                </header>
+                 <p:commandButton value="Estimate your property" action="#{pubController.gotoEstimate()}"  class="form__submit"  style="height: 40px"/>       
+                
+        
+ </div> 
+ </div> 
+ 
+ 
+ 
+
+ 				<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+ 				<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+ 
+ 
+ <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+<script type="text/javascript">
+    var j$132 = $.noConflict(true);
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var j$144 = $.noConflict(true);
+</script>
+
+
+   
+    
+    </h:body>
+    <h:panelGroup>
+		   <!-- BEGIN FOOTER-->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__wrap">
+              <div class="footer__col footer__col--first">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Menu</h2>
+                  </div>
+                  <div class="widget__content">
+                    <nav class="nav nav--footer"><a href="index.html">Home</a><a href="properties_listing_grid.html">Realty</a><a href="agents_listing_grid.html">Agents</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="pricing.html">Pricing</a><a href="contacts.html">Contacts</a><a href="feature_ui.html">UI</a></nav>
+                   
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">About</h2>
+                  </div>
+                  <div class="widget__content">
+                    <aside class="widget_text">
+                      <div class="textwidget">
+                        DariTN is the leader in online real estate.
+                       
+                      </div>
+                      
+                    </aside>
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Social</h2>
+                  </div>
+                  <div class="widget__content">
+                    <div class="social social--footer"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+                    <!-- end of block .social-footer-->
+                  </div>
+                </div>
+              </div>
+              <!-- end of block .footer__col-first-->
+              <div class="footer__col footer__col--second">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Contact</h2>
+                  </div>
+                  <div class="widget__content">
+                    <section class="address address--footer">
+                      <h4 class="address__headline">Our office</h4>
+                      <address class="address__main"><span>ESPRIT Incubator, 4th floor, Tunisia</span><a href="tel:+442240052225">+216 99 999 999</a><a href="mailto:hello@example.com">Dari4infob4@esprit.tn</a></address>
+                    </section>
+                    <!-- end of block .address-->
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Feedback</h2>
+                  </div>
+                  <div class="widget__content">
+                    <!-- BEGIN SECTION FEEDBACK-->
+                    <form action="#" class="form form--flex form--footer js-parsley">
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="in-email" class="sr-only control-label">E-mail</label>
+                          <input id="in-email" type="email" name="email" placeholder="E-mail"  data-parsley-trigger="change" class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                          <label for="in-message" class="sr-only control-label">Message for Us</label>
+                          <textarea id="in-message" name="message" placeholder="Message for Us"  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-validation-threshold="10" data-parsley-minlength-message="You need to enter at least a 20 caracters long comment.." class="form-control"></textarea>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <button type="submit" class="form__submit">Send</button>
+                      </div>
+                    </form>
+                    <!-- end of block .form__wrap-->
+                    <!-- END SECTION FEEDBACK-->
+                  </div>
+                </div>
+              </div>
+              
+              <div class="clearfix"></div><span class="footer__copyright">2020 Dari.tn. All rights reserved</span>
+              <!-- end of block .footer__copyright-->
+            </div>
+          </div>
+        </footer>
+       
+	 </h:panelGroup>
+    
+</ui:define>
+</ui:composition>
+
+ 
+ 

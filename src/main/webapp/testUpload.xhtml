@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+
+
+<h:head>
+	<titre> First </titre>
+</h:head>
+
+<h:body>
+
+
+
+	<form>
+		<input type="file" id="file" /> <input type="text" id="filename"
+			readonly="readonly" /> <input type="submit" />
+	</form>
+
+
+
+	<script type="text/javascript">
+		$("#file").bind("change", function() {
+			var fn = $("#file").val().replace(/\\/g, "/").split("/").slice(-1);
+			$("#filename").val(fn);
+		});
+	</script>
+
+
+
+
+</h:body>
+
+
+</html>

@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" 
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui" 
+ template="/template/template.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content"> 
+<!-- BEGIN : TP1 JSF Introduction Login --> 
+
+
+
+
+
+<h:head>
+
+<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/theme-light_blue-beige.css"  rel="stylesheet" />
+		<link href="../..resources/assets/css/custom.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<script type='text/javascript'>
+		jQuery(function(){ var jq = jQuery.noConflict(true);});
+    	</script>
+    <script type='text/javascript'>
+    document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    doStuff(e);
+}, { passive: false });</script>
+
+</h:head>
+<h:body>
+ <div class="site site--main">
+  <div class="site__main">
+ 
+          <div class="listing__view"><span class="control-label">View:</span><a href="properties_listing_grid.html" class="btn--white"><i class="fa fa-th-large"></i></a><a href="properties_listing_list.html" class="btn--white active"><i class="fa fa-bars"></i></a><a href="properties_listing_table.html" class="btn--white"><i class="fa fa-table"></i></a></div>
+                     <div class="widget js-widget widget--main">
+                         <div class="widget__content">
+                           <div class="listing listing--list js-properties-list">
+                           <ui:repeat var="pub" value="#{pubController.search}">
+                           
+                           
+                            <div class="listing__item">
+                          <div class="properties properties--list">
+                            <div class="properties__thumb"><a href="property_details.html" class="item-photo"><h:graphicImage value="/images/22.jpg" />
+                                <figure class="item-photo__hover item-photo__hover--params"><span class="properties__params">#{pub.intSurface}</span><span class="properties__params">#{pub.extSurface}</span>
+                                </figure></a><span class="properties__ribon">For rent</span>
+                            </div>
+                            <!-- end of block .properties__thumb-->
+                            <div class="properties__details">
+                              <div class="properties__info"><a href="property_details.html" class="properties__address"><span class="properties__address-street"></span><span class="properties__address-city">#{pub.adresse}</span></a>
+                                <div class="properties__offer">
+                                  <div class="properties__offer-column">
+                                    <div class="properties__offer-label"></div>
+                                    <div class="properties__offer-value"><strong> </strong>
+                                    </div>
+                                  </div>
+                                  <div class="properties__offer-column">
+                                    <div class="properties__offer-value"><strong>#{pub.price}</strong><span class="properties__offer-period">/month</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="properties__params--mob"><a href="#" class="properties__more">View details</a><span class="properties__params">#{pub.intSurface}</span><span class="properties__params">#{pub.extSurface}</span></div>
+                              </div>
+                              <div class="properties__intro">
+                                <p>My home is bright and spacious. Very good transport links. Close to the Olympic village, Westfield and the centre of town. The house has all the mod cons and wifi is included. The room is for a single person occupancy.</p>
+                              </div>
+                              <p:commandButton 
+							action="#{pubController.displayPub(pub)}"
+							value="View details" />
+                            </div>
+                            <!-- end of block .properties__info-->
+                          </div>
+                          <!-- end of block .properties__item-->
+                        </div>
+        
+        
+        </ui:repeat>
+    </div>
+     </div>
+      </div>
+        </div>
+          </div>
+          				<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          				<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places,drawing,geometry"></script>
+    <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+<script type="text/javascript">
+    var j$132 = $.noConflict(true);
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var j$144 = $.noConflict(true);
+</script>
+   
+    
+    </h:body>
+    
+</ui:define>
+</ui:composition>

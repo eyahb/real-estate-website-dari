@@ -1,6 +1,8 @@
 package tn.esprit.spring.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -67,6 +69,10 @@ public class User {
 	
 	
 
+	@OneToMany(mappedBy="user", 
+			cascade=CascadeType.ALL,orphanRemoval=true)
+	private List<AnnonceReview> annonceReviews = new ArrayList<>();
+	
 	
 	private Long userIdToBeUpdated; 
 	
@@ -199,6 +205,12 @@ public class User {
 	}
 	public void setReclamations(Set<Reclamation> reclamations) {
 		Reclamations = reclamations;
+	}
+	public List<AnnonceReview> getAnnonceReviews() {
+		return annonceReviews;
+	}
+	public void setAnnonceReviews(List<AnnonceReview> annonceReviews) {
+		this.annonceReviews = annonceReviews;
 	}
 	@Override
 	public String toString() {

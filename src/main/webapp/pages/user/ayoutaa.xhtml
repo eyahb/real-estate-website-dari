@@ -1,0 +1,309 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" 
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui" 
+ template="/template/templateeya.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content"> 
+<!-- BEGIN : TP1 JSF Introduction Login --> 
+
+
+
+
+
+<h:head>
+
+<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/theme-light_blue-beige.css"  rel="stylesheet" />
+		<link href="../..resources/assets/css/custom.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<script type='text/javascript'>
+		jQuery(function(){ var jq = jQuery.noConflict(true);});
+    	</script>
+    <script type='text/javascript'>
+    document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    doStuff(e);
+}, { passive: false });</script>
+   
+				
+	<style>               
+.Bimage{background-image:url(#{request.contextPath}/resources/assets/media-demo/banner/darrrr333.jpg);
+ }       
+  	</style>   
+	  
+	  <style>  
+	  .dropdown-menu-center {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+	  
+	</style>   
+	  
+</h:head>
+ <h:body styleClass="Bimage">
+ 
+  <h:panelGroup columns="2" cellpadding="5">
+  
+			
+			 <p:growl id="growl" showDetail="true" sticky="true" /> 
+			   
+			 
+				<div class="widget js-widget">
+          <div class="widget__content">
+            <div class="banner js-banner banner--wide">
+             <div class="map map--index map--banner">
+                  <div class="map__buttons">
+                    <button type="button" class="map__change-map js-map-btn">Property Map</button>
+                  </div>
+                  <div class="map__wrap">
+                    <div data-infobox-theme="white" class="map__view js-map-index-canvas"></div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                   <div class="banner__caption">
+                      <h1 class="banner__title">The Best Way to Find Your Perfect Home</h1>
+                      <h3 class="banner__subtitle">We have the most listings and constant updates, Dari has the largest inventory of apartments in Tunisia, so you’ll never miss out..</h3><span class="banner__btn">Get started</span>
+                      <div class="banner__arrow-circle">•</div>
+                      <svg class="banner__arrow-end js-arrow-end">
+                        <use href="#icon-arrow-end"></use>
+                      </svg>
+                      <div class="banner__arrow">
+                        <svg id="banner-line" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                          viewBox="0 0 774 284" enable-background="new 0 0 774 284" xml:space="preserve">
+                          <path  fill="none" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="0,2004.009" d="M220.6,239.6
+                          c-3.6-15.5-17.5-27.1-34.1-27.1h-150c-19.3,0-35,15.7-35,35c0,19.3,15.7,35,35,35c0,0,88,0,150,0c169,0,244.9-7.5,291-19
+                          c41.3-10.2,114.1-33.7,118-83c4.2-53.5-59.4-67.5-102-54c-47.2,15-52.3,78.2,1,90c58.1,12.9,169.6-53.6,274.7-210"/>
+                        </svg>
+                      </div>
+                    </div>
+                     <div class="banner__search">
+                      <div class="banner__sidebar-title">The Best Way to Find Your Perfect Home</div>
+                       <h:form action="properties_listing_list.html" class="form form--flex form--search js-search-form form--banner-sidebar" style="width:320px;
+                        height: 400px; position: absolute;left: 320%;top: -600px">               
+                       
+			 <p:growl id="growl" showDetail="true" sticky="true" /> 
+                     
+                        <div class="row" >
+                       <div class="widget js-widget widget--main widget--no-margin widget--no-border widget--collapse">
+				 <div class="form-group">
+					<p:outputLabel for="button" value="Departure date" ></p:outputLabel>
+						<p:calendar  id="button1" showOn="button" pattern="dd-MM-yyyy" locale="pt" required="true" value="#{locationController.dateDepart}">
+          
+                </p:calendar>
+                 </div>
+					
+				<div class="form-group">
+					<p:outputLabel  for="button"  value="Reaching date" ></p:outputLabel>
+						
+						<p:calendar id="button" showOn="button" pattern="dd-MM-yyyy" locale="pt" required="true" value="#{locationController.dateArrivee}">
+          	    </p:calendar>
+               		
+					 </div>
+					<div class="form-group">
+						<p:outputLabel value="Renters number"></p:outputLabel>
+						<p:selectOneMenu id="longItemLabel" value="#{locationController.nbPersonne}" style="width:100px;left: 8%">
+            <f:selectItem itemLabel="One" itemValue="1" />
+            <f:selectItem itemLabel="Two" itemValue="2" />
+            <f:selectItem itemLabel="Three" itemValue="3" />
+            <f:selectItem itemLabel="Four" itemValue="4" />
+            <f:selectItem itemLabel="Five" itemValue="5" />
+            <f:selectItem itemLabel="Six" itemValue="6" />
+            <f:selectItem itemLabel="Seven" itemValue="7" />
+            <f:selectItem itemLabel="Eight" itemValue="8" />
+            <f:selectItem itemLabel="Nine" itemValue="9" />
+            <f:selectItem itemLabel="Ten" itemValue="10" />
+						</p:selectOneMenu>
+					
+					  </div>
+					   
+							
+							<h:commandButton value="add location" action="#{locationController.addLocation()}" class="form__submit" update="@form" ></h:commandButton>
+							<h:commandButton
+								value="Update Location"
+								action="#{locationController.updateLocation()}" class="form__submit" update="@form" />
+								     <p:commandButton value="Goto Search" action="#{pubController.gotoSearch()}"  class="form__submit"  /> 
+								
+							
+								
+								 </div>
+								  </div>
+								   
+					      </h:form>
+						</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+						
+					
+					</h:panelGroup>
+					
+					
+					<h:form id="form1">
+						<p:dataTable value="#{locationController.locations}" var="location" 
+						 rowKey="#{location.id}"
+                selectionMode="single" rows="5" paginator="true" rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+					 <p:growl id="growl" showDetail="true" sticky="true" /> 
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Departure Date" />
+						</f:facet>
+						<h:outputText value="#{location.dateDepart}" />
+					</p:column >
+					<p:column >
+						<f:facet name="header">
+							<h:outputText value="Reaching Date" />
+						</f:facet>
+						<h:outputText value="#{location.dateArrivee}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Renters number" />
+						</f:facet>
+						<h:outputText value="#{location.nbPersonne}" />
+					</p:column>
+				<p:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton  
+							action="#{locationController.removeLocation(location.id)}"
+							value="Delete"  icon="ui-icon-trash" update="@form"  />
+						<h:commandButton 
+							action="#{locationController.displayLocation(location)}"
+							value="Display"  update="@form"/>
+					</p:column>
+				</p:dataTable>
+				</h:form>
+				
+				<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+
+
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places,drawing,geometry"></script>
+    <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+<script type="text/javascript">
+    var j$132 = $.noConflict(true);
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var j$144 = $.noConflict(true);
+</script>
+   
+    
+    </h:body>
+    <h:panelGroup>
+		   <!-- BEGIN FOOTER-->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer__wrap">
+              <div class="footer__col footer__col--first">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Menu</h2>
+                  </div>
+                  <div class="widget__content">
+                    <nav class="nav nav--footer"><a href="index.html">Home</a><a href="properties_listing_grid.html">Realty</a><a href="agents_listing_grid.html">Agents</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="pricing.html">Pricing</a><a href="contacts.html">Contacts</a><a href="feature_ui.html">UI</a></nav>
+                   
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">About</h2>
+                  </div>
+                  <div class="widget__content">
+                    <aside class="widget_text">
+                      <div class="textwidget">
+                        DariTN is the leader in online real estate.
+                       
+                      </div>
+                      
+                    </aside>
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Social</h2>
+                  </div>
+                  <div class="widget__content">
+                    <div class="social social--footer"><a href="#" class="social__item"><i class="fa fa-facebook"></i></a><a href="#" class="social__item"><i class="fa fa-twitter"></i></a><a href="#" class="social__item"><i class="fa fa-google-plus"></i></a></div>
+                    <!-- end of block .social-footer-->
+                  </div>
+                </div>
+              </div>
+              <!-- end of block .footer__col-first-->
+              <div class="footer__col footer__col--second">
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Contact</h2>
+                  </div>
+                  <div class="widget__content">
+                    <section class="address address--footer">
+                      <h4 class="address__headline">Our office</h4>
+                      <address class="address__main"><span>ESPRIT Incubator, 4th floor, Tunisia</span><a href="tel:+442240052225">+216 99 999 999</a><a href="mailto:hello@example.com">Dari4infob4@esprit.tn</a></address>
+                    </section>
+                    <!-- end of block .address-->
+                  </div>
+                </div>
+                <div class="widget js-widget widget--footer">
+                  <div class="widget__header">
+                    <h2 class="widget__title">Feedback</h2>
+                  </div>
+                  <div class="widget__content">
+                    <!-- BEGIN SECTION FEEDBACK-->
+                    <form action="#" class="form form--flex form--footer js-parsley">
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="in-email" class="sr-only control-label">E-mail</label>
+                          <input id="in-email" type="email" name="email" placeholder="E-mail"  data-parsley-trigger="change" class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                          <label for="in-message" class="sr-only control-label">Message for Us</label>
+                          <textarea id="in-message" name="message" placeholder="Message for Us"  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-validation-threshold="10" data-parsley-minlength-message="You need to enter at least a 20 caracters long comment.." class="form-control"></textarea>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <button type="submit" class="form__submit">Send</button>
+                      </div>
+                    </form>
+                    <!-- end of block .form__wrap-->
+                    <!-- END SECTION FEEDBACK-->
+                  </div>
+                </div>
+              </div>
+              
+              <div class="clearfix"></div><span class="footer__copyright">2020 Dari.tn. All rights reserved</span>
+              <!-- end of block .footer__copyright-->
+            </div>
+          </div>
+        </footer>
+       
+	</h:panelGroup>
+    
+</ui:define>
+</ui:composition>

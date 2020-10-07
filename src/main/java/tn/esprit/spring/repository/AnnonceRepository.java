@@ -29,11 +29,28 @@ public interface AnnonceRepository extends CrudRepository<Annonce, Long> {
     
     @Modifying
     @Transactional
+    @Query("UPDATE Annonce e SET e.AdState='Paid' where e.id=:annonceId")
+    public void paidAnnonceJPQL( @Param("annonceId")long annonceId);
+    
+    @Modifying
+    @Transactional
     @Query("UPDATE Annonce e SET e.AdState='Denied' where e.id=:annonceId")
     public void denyAnnonceJPQL( @Param("annonceId")long annonceId);
 
 	@Query("SELECT COUNT(u) FROM Annonce u WHERE u.AdState = 'Accepted' ")
 	public int countAcceptedAds();
+	
+	@Query("SELECT COUNT(u) FROM Annonce u WHERE u.user.id=:userId ")
+	public int countUserAds(@Param("userId")long userId);
+	
+	@Query("SELECT u FROM Annonce u WHERE u.AdState = 'Accepted'  ORDER BY u.rating Desc ")
+	public List<Annonce> findBestReviewed();
+	
+    @Modifying
+    @Transactional
+    @Query("UPDATE Annonce e SET e.rating=:rating where e.id=:annonceId")
+    public void changeRatingJPQL( @Param("annonceId")Long annonceId, @Param("rating")int rating);
+	
     
 }
 

@@ -1,63 +1,187 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
- xmlns:f="http://java.sun.com/jsf/core" 
- xmlns:h="http://java.sun.com/jsf/html" 
- xmlns:ui="http://java.sun.com/jsf/facelets" 
- template="/template/template.xhtml">
-<ui:param name="page_name" value="Accueil" />
-<ui:define name="content"> 
-<!-- BEGIN : TP1 JSF Introduction Login --> 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+		<!-- BEGIN : TP1 JSF Introduction Login -->
 
 
 
 
 
-<h:head>
+		<h:head>
 
-<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
-		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
-		<link href="../../resources/assets/css/theme-blue-orange_red.css"  rel="stylesheet" />
-		<link href="../../resources/assets/css/custom.css"  rel="stylesheet" />
-		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
-		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
-		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+			<link href="../../resources/assets/css/vendor.css" rel="stylesheet" />
+			<link href="../../resources/assets/css/font-awesome.css"
+				rel="stylesheet" />
+			<link href="../../resources/assets/css/theme-blue-orange_red.css"
+				rel="stylesheet" />
+			<link href="../../resources/assets/css/custom.css" rel="stylesheet" />
+			<link href="../../resources/assets/css/ie-fix.css" rel="stylesheet" />
+			<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+			<link href="../../resources/assets/img/favicon.ico" rel="stylesheet"
+				type="image/x-icon" />
 
-</h:head>
+		</h:head>
+
+		<h:panelGroup columns="2">
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Recomendation lettre"></h:outputText></td>
+						<td><h:inputText
+								value="#{achatController.recomendationLetter}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Remarque"></h:outputText></td>
+						<td><h:inputText value="#{achatController.remarque}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="history"></h:outputText></td>
+						<td><h:inputText value="#{achatController.history}"></h:inputText></td>
+					</tr>
+
+					<tr>
+
+					
+						<td><h:outputText value="Start date"></h:outputText></td>
+						<td><p:datePicker id="button"
+								value="#{achatController.datedachat}" showIcon="true" /></td>
+
+						<!-- 						<td><p:inputMask id="date" value="#{achatController.datedachat}" mask="99/99/9999"/></td> -->
+
+					</tr>
+
+					<tr>
+						<td><h:outputText value="paymentmode"></h:outputText></td>
+						<td><h:selectOneMenu value="#{achatController.payementmode}">
+								<f:selectItem itemLabel="Choisir le mode" itemValue="#{null}" />
+								<f:selectItems value="#{achatController.payementmodes}" />
+
+							</h:selectOneMenu></td>
+					</tr>
+					<tr>
+						<div class=" p-fluid p-grid p-formgrid">
+							<div class="p-field p-col-12 p-md-4">
+								<label for="basic">Basic</label>
+								<Calendar id="basic" v-model="date1" />
+							</div>
+						</div>
+					</tr>
+					<tr>
+						<td><h:commandButton value="Ajouter Achat"
+								action="#{achatController.addAchat()}" /></td>
+					</tr>
+					<tr>
+						<td><h:commandButton value="Mettre A jour"
+								action="#{achatController.updateAchat()}" /></td>
+					</tr>
+
+					<tr>
+						<td><h:panelGroup>
+								<h:form>
+
+
+									<h:commandButton value="voir mes achats"
+										action="#{achatController.dogoto()}" />
+								</h:form>
+							</h:panelGroup></td>
+					</tr>
+
+				</table>
 
 
 
 
 
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+
+				<script type="text/javascript"
+					src="http://maps.google.com/maps/api/js?libraries=places,drawing,geometry"></script>
+				<script type="text/javascript"
+					src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+
+				<script type="text/javascript"
+					src="../../resources/assets/js/vendor.js"></script>
+
+				<script type="text/javascript"
+					src="../../resources/assets/js/demodata.js"></script>
+
+				<script type="text/javascript"
+					src="../../resources/assets/js/app.js"></script>
+
+				<script type="text/javascript"
+					src="../../resources/assets/js/demo.js"></script>
+
+			</h:form>
+		</h:panelGroup>
+
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{achatController.achats}" var="achat"
+					border="5">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="recommandation lettre (url)" />
+						</f:facet>
+						<h:outputText value="#{achat.recomendationLetter}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Remarque" />
+						</f:facet>
+						<h:outputText value="#{achat.remarque}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="history" />
+						</f:facet>
+						<h:outputText value="#{achat.history}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="payementmode" />
+						</f:facet>
+						<h:outputText value="#{achat.payementmode}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="date d'achat " />
+						</f:facet>
+						<h:outputText value="#{achat.datedachat}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton action="#{achatController.removeAchat(achat.id)}"
+							value="Supprimer" />
+						<h:commandButton action="#{achatController.displayAchat(achat)}"
+							value="Afficher" />
+
+
+					</h:column>
+
+				</h:dataTable>
+
+			</h:form>
+		</h:panelGroup>
 
 
 
 
-
-
-<body>
-
-  
-            
-            
-            
-            
-
-
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places,drawing,geometry"></script>
-    <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
-   
-    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
-   
-    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
- 
-    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
- 
-    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
-    
-   
-    
-    </body>
-    
-</ui:define>
+	</ui:define>
 </ui:composition>

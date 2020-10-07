@@ -1,0 +1,229 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core" 
+ xmlns:h="http://java.sun.com/jsf/html" 
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:p="http://primefaces.org/ui" 
+ template="/template/templateeya.xhtml">
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content"> 
+<!-- BEGIN : TP1 JSF Introduction Login --> 
+<h:head>
+<link href="../../resources/assets/css/vendor.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/font-awesome.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/theme-light_blue-beige.css"  rel="stylesheet" />
+		<link href="../..resources/assets/css/custom.css"  rel="stylesheet" />
+		<link href="../../resources/assets/css/ie-fix.css"  rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" />
+		<link href="../../resources/assets/img/favicon.ico" rel="stylesheet" type="image/x-icon" />
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+		<script type='text/javascript'>
+		jQuery(function(){ var jq = jQuery.noConflict(true);});
+    	</script>
+    <script type='text/javascript'>
+    document.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    doStuff(e);
+}, { passive: false });</script>  
+</h:head>
+<h:body>
+
+
+
+
+<h:panelGroup columns="2" cellpadding="5">
+	<div class="site-wrap js-site-wrap">
+        <div class="widget js-widget widget--landing widget--bg">
+         <div class="widget__header"  style="width:800px; height: 800px">
+            <h2 class="widget__title"><span class="title-thin">Find your</span> home</h2>
+          </div>
+          <div class="widget__content">
+           <h:form action="properties_listing_list.html" class="form form--flex form--search js-search-form form--wide" style="width:990px;
+                     height: 350px; position: absolute;left: 10%;top: 250px"> 
+                     <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+              <div class="row">
+        <div class="form-group"  >
+        <label for="in-keyword" class="control-label">Location</label>
+                   <h:selectOneMenu class="form-control" value="#{pubController.adresse}" required="true">
+                   <f:selectItem itemValue = "Tunis" itemLabel = "Tunis" /> 
+                     <f:selectItem itemValue = "Ariana" itemLabel = "Ariana" />
+                         <f:selectItem itemValue = "Béja" itemLabel = "Béja" /> 
+                     <f:selectItem itemValue = "Ben Arous" itemLabel = "Ben Arous" />
+                         <f:selectItem itemValue = "Bizerte" itemLabel = "Bizerte" /> 
+                     <f:selectItem itemValue = "Gabès" itemLabel = "Gafsa" />
+                         <f:selectItem itemValue = "Jendouba" itemLabel = "Jendouba" /> 
+                     <f:selectItem itemValue = "Kairouan" itemLabel = "Kairouan" />
+                         <f:selectItem itemValue = "Kasserine" itemLabel = "Kasserine" /> 
+                     <f:selectItem itemValue = "Kébili" itemLabel = "Kébili" />
+                       <f:selectItem itemValue = "Kef" itemLabel = "Kef" />
+                         <f:selectItem itemValue = "Mahdia" itemLabel = "Mahdia" /> 
+                     <f:selectItem itemValue = "Manouba" itemLabel = "Manouba" />  
+                     <f:selectItem itemValue = "Kairouan" itemLabel = "Kairouan" />
+                         <f:selectItem itemValue = "Médenine" itemLabel = "Médenine" /> 
+                     <f:selectItem itemValue = "Monastir" itemLabel = "Monastir" />
+                     <f:selectItem itemValue = "Nabeul" itemLabel = "Nabeul" /> 
+                     <f:selectItem itemValue = "Sfax" itemLabel = "Sfax" />
+                     <f:selectItem itemValue = "Sidi Bouzid" itemLabel = "Sidi Bouzid" /> 
+                     <f:selectItem itemValue = "Siliana" itemLabel = "Siliana" />
+                       <f:selectItem itemValue = "Sousse" itemLabel = "Sousse" />
+                     <f:selectItem itemValue = "Tataouine" itemLabel = "Tataouine" /> 
+                     <f:selectItem itemValue = "Tozeur" itemLabel = "Tozeur" />
+                       <f:selectItem itemValue = "Zaghouan" itemLabel = "Zaghouan" />
+                  </h:selectOneMenu >
+      
+        
+        </div>
+        
+        <div class="form-group" > 
+         <label for="in-keyword" class="control-label">Type</label>
+                  <h:selectOneMenu class="form-control" value="#{pubController.type}" required="true">
+                    <f:selectItem itemValue = "house" itemLabel = "house" /> 
+                     <f:selectItem itemValue = "appartement" itemLabel = "appartement" />
+                     <f:selectItem itemValue = "villa" itemLabel = "villa" />
+                     <f:selectItem itemValue = "studio" itemLabel = "studio" />
+                  </h:selectOneMenu >
+         
+        </div>
+       
+        <div class="form-group">
+         <label for="in-keyword" class="control-label">Interior m²</label>
+                  <h:inputText class="form-control" value="#{pubController.intSurface}" required="true"></h:inputText>
+        
+        
+        </div>
+        
+        
+         <div class="form-group">
+          <label for="in-keyword" class="control-label">Exterior m²</label>
+                  <h:inputText class="form-control" value="#{pubController.extSurface}" required="true"></h:inputText>
+        
+        </div>
+        
+        <div class="form-group">
+         <label for="in-keyword" class="control-label">Price(DT)</label>
+                  <h:inputText class="form-control" value="#{pubController.price}"></h:inputText>
+        
+         
+        
+        </div>
+        
+        
+        <div class="form-group" > 
+         <label for="in-keyword" class="control-label">Rooms</label>
+                  <h:selectOneMenu class="form-control" value="#{pubController.rooms}" required="true">
+                    <f:selectItem itemValue = "1" itemLabel = "S+1" /> 
+                    <f:selectItem itemValue = "2" itemLabel = "S+2" /> 
+                    <f:selectItem itemValue = "3" itemLabel = "S+3" /> 
+                    <f:selectItem itemValue = "4" itemLabel = "S+4" /> 
+                    </h:selectOneMenu>
+                    
+         
+       </div> 
+       
+        <div class="form-group" > 
+         <label for="in-keyword" class="control-label">Bathrooms</label>
+               <h:selectOneMenu class="form-control" value="#{pubController.numberBathrooms}" required="true">
+                    <f:selectItem itemValue = "1" itemLabel = "1" /> 
+                    <f:selectItem itemValue = "2" itemLabel = "2" /> 
+                    <f:selectItem itemValue = "3" itemLabel = "3" />
+                    </h:selectOneMenu> 
+         </div> 
+       
+       
+       <div class="form-group" > 
+         <label for="in-keyword" class="control-label">Garages</label>
+                 <h:selectOneMenu class="form-control" value="#{pubController.numberGarages}" required="true">
+                  <f:selectItem itemValue = "1" itemLabel = "1" /> 
+                    <f:selectItem itemValue = "2" itemLabel = "2" /> 
+                    <f:selectItem itemValue = "3" itemLabel = "3" /> 
+                    </h:selectOneMenu>
+                  
+       </div> 
+        
+
+
+<div class="form__buttons form__buttons--double" style="height: 20px;top: 50px">
+<p:commandButton value="Show All" action="#{pubController.gotoFilter()}"  class="form__submit"  style="height: 60px"/>
+<h:commandButton value="Search" action="#{pubController.getSearch1()}"  class="form__submit"  style="height: 60px"/> 
+  
+             <br></br><br></br><br></br>
+              
+               
+               
+                       
+                                                <p:commandButton value="Price Estimation" action="#{pubController.gotoMap3()}"  class="form__submit"  style="height: 60px"/>       
+                
+                                <p:commandButton value="Search In Map" action="#{pubController.gotoSearchmap()}"  class="form__submit"  style="height: 60px"/> 
+                                 <br></br><br></br><br></br>
+                
+         </div>  
+        
+ </div> 
+ </h:form>      
+ </div>       
+</div>
+</div>        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places,drawing,geometry"></script>
+    <script type="text/javascript" src="http://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/vendor.js"></script>
+   
+    <script type="text/javascript" src="../../resources/assets/js/demodata.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/app.js"></script>
+ 
+    <script type="text/javascript" src="../../resources/assets/js/demo.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>  
+<script type="text/javascript">
+    var j$132 = $.noConflict(true);
+</script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+    var j$144 = $.noConflict(true);
+</script>
+</h:panelGroup>
+</h:body>
+
+
+
+
+
+ 
+       
+	
+    
+</ui:define>
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+

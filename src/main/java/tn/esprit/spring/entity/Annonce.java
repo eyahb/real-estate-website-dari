@@ -40,6 +40,8 @@ public class Annonce implements Serializable {
 	@Column 
 	private Float price;
 	@Column 
+	private int rating;
+	@Column 
 	private String description;
 	public Annonce(String title, String adresse, String description, State state) {
 		super();
@@ -142,6 +144,12 @@ public class Annonce implements Serializable {
 	
 
 	
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public AdState getAdState() {
 		return AdState;
 	}
@@ -422,13 +430,13 @@ public class Annonce implements Serializable {
 		this.numberBathrooms = numberBathrooms;
 		this.numberGarages = numberGarages;
 	}
-	public Annonce(Long annonceIdToBeUpdated, String title, String adresse,  Float price, String description, String picture,
-			String intSurface, String extSurface, Long numberRooms, StatePrice statePrice, Date createdAt, User user, String history, State state,
-			ContractType contractType, String country, String city, Long numberBathrooms, Long numberGarages) {
+	public Annonce(Long id, String title, String adresse,  Float price, String description, String picture,
+			String intSurface, String extSurface, Long numberRooms, StatePrice statePrice, Date createdAt, Date updateAt, User user, String history, State state,
+			ContractType contractType, String country, String city, Long numberBathrooms, Long numberGarages, AdState adState) {
 		super();
 		this.title = title;
 		this.adresse = adresse;
-		this.annonceIdToBeUpdated = annonceIdToBeUpdated;
+		this.id = id;
 		this.price = price;
 		this.description = description;
 		this.picture = picture;
@@ -437,6 +445,7 @@ public class Annonce implements Serializable {
 		this.numberRooms = numberRooms;
 		this.statePrice = statePrice;
 		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 		this.user = user;
 		this.history = history;
 		this.state = state;
@@ -445,7 +454,11 @@ public class Annonce implements Serializable {
 		this.city = city;
 		this.numberBathrooms = numberBathrooms;
 		this.numberGarages = numberGarages;
+		this.AdState = adState;
 	}
+
+
+	
 	public Annonce( String title, String adresse, Float price, String description, String picture,
 			String intSurface, String extSurface, Long numberRooms, StatePrice statePrice,
 			AdState adState, Date createdAt, Date updatedAt, Long numberBathrooms,
@@ -504,6 +517,31 @@ public class Annonce implements Serializable {
 		this.numberBathrooms = numberBathrooms;
 		this.numberGarages = numberGarages;
 	}
+	public Annonce(String title, String adresse,  Float price, String description, String picture,
+			String intSurface, String extSurface, Long numberRooms, StatePrice statePrice, Date createdAt, User user, String history, State state,
+			ContractType contractType, String country, String city, Long numberBathrooms, Long numberGarages, AdState adState, int rating) {
+		super();
+		this.title = title;
+		this.adresse = adresse;
+		AdState = adState;
+		this.price = price;
+		this.description = description;
+		this.picture = picture;
+		this.intSurface = intSurface;
+		this.extSurface = extSurface;
+		this.numberRooms = numberRooms;
+		this.statePrice = statePrice;
+		this.createdAt = createdAt;
+		this.user = user;
+		this.history = history;
+		this.state = state;
+		this.contractType = contractType;
+		this.country = country;
+		this.city = city;
+		this.numberBathrooms = numberBathrooms;
+		this.numberGarages = numberGarages;
+		this.rating= rating;
+	}
 	public Annonce(Long annonceIdToBeUpdated, String title, String adresse,  Float price, String description, String picture,
 			String intSurface, String extSurface, Long numberRooms, StatePrice statePrice, Date createdAt, User user, String history, State state,
 			ContractType contractType, String country, String city, Long numberBathrooms, Long numberGarages, AdState adState) {
@@ -533,6 +571,11 @@ public class Annonce implements Serializable {
 		super();
 		AdState = adState;
 		this.id = id;
+	}
+	public Annonce(Long id, int rating) {
+		super();
+		this.id = id;
+		this.rating = rating;
 	}
 	
 	
